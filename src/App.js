@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
+import WordsList from './components/WordsList';
+import TableList from './components/TableList';
+
 
 function App() {
   return (
     <div className="App">
-      Hello!
+      {/* <WordsList/> */}
+      <TableList/>
     </div>
   );
 }
