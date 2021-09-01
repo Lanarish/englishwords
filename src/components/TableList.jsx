@@ -1,5 +1,7 @@
 import React from 'react';
-import './styles/tableList.css'
+import './styles/tableList.css';
+
+
 
 const words = [
     { id: "1", word: "butterfly", transcription: "[ˈbʌtəflaɪ]", translation: "бабочка" },

@@ -7,8 +7,8 @@ import TableList from './components/TableList';
 function App() {
   return (
     <div className="App">
-      <WordsList/> 
-      {/* <TableList/> */}
+      {/* <WordsList/>  */}
+      <TableList/>
     </div>
   );
 }
