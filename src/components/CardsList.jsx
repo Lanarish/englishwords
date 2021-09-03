@@ -24,7 +24,8 @@ function CardsList() {
                 words.map(card => (
                     <Card
                         word={card.word}
-                        transcription={card.transcription}></Card>
+                        transcription={card.transcription}
+                        translation={card.translation}></Card>
                 ))
             }
         </div>

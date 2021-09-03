@@ -20,6 +20,12 @@
     font-weight: 500;
 }
 
+.translation {
+    font-size: 26px;
+    margin-top: 10px;
+    color: indianred;
+}
+
 .button-translate {
     width: 150px;
     height: 40px;

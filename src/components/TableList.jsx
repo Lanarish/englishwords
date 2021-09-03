@@ -1,5 +1,7 @@
 import React from 'react';
 import './styles/tableList.css';
+import TableButtonDelete from './TableButtonDelete';
+import TableButtonEdit from './TableButtonEdit';
 
 
 
@@ -46,8 +48,8 @@ function TableList() {
                                     </div>
                                 ) : (
                                     <div >
-                                        <button className="table_button">Delete</button>
-                                        <button className="table_button">Edit</button>
+                                        <TableButtonDelete />
+                                        <TableButtonEdit />
                                     </div>
                                 )}
                             </td>
