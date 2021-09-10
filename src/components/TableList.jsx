@@ -6,15 +6,15 @@ import Table from './Table';
 
 
 const words = [
-    { id: "1", word: "butterfly", transcription: "[ˈbʌtəflaɪ]", translation: "бабочка" },
-    { id: "2", word: "library", transcription: "[ ˈlaɪbrəri ]", translation: "библиотека" },
-    { id: "3", word: "cinema", transcription: "[ ˈsɪnəmə ]", translation: "кино" },
-    { id: "4", word: "world", transcription: "[ wɜːld ]", translation: "мир" },
-    { id: "5", word: "boy ", transcription: "[ bɔɪ ] ", translation: "мальчик" },
-    { id: "6", word: "life", transcription: "[ laɪf ] ", translation: "жизнь" },
-    { id: "7", word: "friend", transcription: " [ frend ] ", translation: "друг" },
-    { id: "8", word: "family ", transcription: "[ ˈfæm. ə l.i ] ", translation: "семья" },
-    { id: "9", word: "window", transcription: "[ ˈwɪn.dəʊ ] ", translation: "окно" }
+    { id: "1", english: "butterfly", transcription: "[ˈbʌtəflaɪ]", translation: "бабочка" },
+    { id: "2", english: "library", transcription: "[ ˈlaɪbrəri ]", translation: "библиотека" },
+    { id: "3", english: "cinema", transcription: "[ ˈsɪnəmə ]", translation: "кино" },
+    { id: "4", english: "world", transcription: "[ wɜːld ]", translation: "мир" },
+    { id: "5", english: "boy ", transcription: "[ bɔɪ ] ", translation: "мальчик" },
+    { id: "6", english: "life", transcription: "[ laɪf ] ", translation: "жизнь" },
+    { id: "7", english: "friend", transcription: " [ frend ] ", translation: "друг" },
+    { id: "8", english: "family ", transcription: "[ ˈfæm. ə l.i ] ", translation: "семья" },
+    { id: "9", english: "window", transcription: "[ ˈwɪn.dəʊ ] ", translation: "окно" }
 
 ];
 
@@ -34,12 +34,10 @@ function TableList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {words.map(table => (
+                    {words.map(word => (
                         <Table
-                            id={table.id}
-                            word={table.word}
-                            transcription={table.transcription}
-                            translation={table.translation}>
+                            key={word.id}
+                            word={word}>
                         </Table>
                     ))
                     }
