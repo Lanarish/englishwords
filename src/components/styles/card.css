@@ -1,6 +1,6 @@
 .card {
     width: 260px;
-    height: 140px;
+    height: 150px;
     border: 1px solid rgb(149, 7, 7);
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px rgb(170, 104, 104);
@@ -21,9 +21,15 @@
 }
 
 .translation {
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
     font-size: 26px;
     margin-top: 10px;
+    border-radius: 10px;
     color: indianred;
+    border: 1px solid rgb(90, 88, 88);
 }
 
 .button-translate {
@@ -49,4 +55,34 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 25px;
+}
+
+
+
+
+.cardWrapper {
+    max-width: 70%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leftArrow {
+    padding: 5px;
+    width: 5rem;
+    height: 2rem;
+    background-color: indianred;
+    color: #fff;
+    border-radius: 50px;
+    border: none;
+    font-size: 22px;
+}
+
+.number_of_card {
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
