@@ -61,10 +61,10 @@
 
 
 .cardWrapper {
-    max-width: 70%;
+    max-width: 60%;
     display: flex;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 15%;
     text-align: center;
     align-items: center;
     justify-content: space-between;
