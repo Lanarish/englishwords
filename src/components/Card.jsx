@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles/card.css'
 
 
 
 function Card(props) {
-    const [pressed, setPressed] = useState(false);
+    // const [pressed, setPressed] = useState(false);
 
-    const handleClick = () => {
-        setPressed(!pressed);
-    }
-    const { english, transcription, translation } = props;
+    // const handleClick = () => {
+    //     setPressed(!pressed);
+    // }
+    const { english, transcription, translation, pressed, handleClick } = props;
     return (
         <div className="card">
             <div className="word">{english}</div>
