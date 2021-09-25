@@ -14,17 +14,26 @@
 }
 
 .links {
-    width: 300px;
+    width: 400px;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
     align-items: center;
 
-
 }
+
+
 
 .links_li {
     font-size: 22px;
     text-decoration: none;
     color: #fff;
+}
+
+.links_li:hover {
+    font-size: 26px;
+    background-color: rgb(212, 24, 24);
+    border-radius: 10px;
+    padding: 5px;
+
 }

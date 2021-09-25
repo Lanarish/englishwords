@@ -15,18 +15,18 @@ function App() {
     <div className="App"> 
       <Navigation/>
         <Switch>
-          <Route path="/table"> 
-            <TableList/>
-          </Route>
           <Route path="/game"> 
             <Carousel data={words}/>
           </Route>
           <Route path="/cards">
             <CardsList/>
           </Route>
-          <Route path="/">
+          <Route path="/"> 
+            <TableList/>
+          </Route>
+          {/* <Route path="/">
             Welcome to LOGOS!
-            </Route>
+            </Route> */}
         </Switch>
         </div>
     </BrowserRouter>

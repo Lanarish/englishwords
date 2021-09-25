@@ -21,7 +21,7 @@
 }
 
 .translation {
-    width: 150px;
+    width: 180px;
     height: 40px;
     margin: 0 auto;
     padding: 5px 0 0 0;
@@ -43,8 +43,12 @@
     font-size: 18px;
 }
 
-.button-translate:hover {
+/* .button-translate:hover {
     background-color: rgb(212, 24, 24);
+} */
+
+.button-translate:focus {
+    background-color: rgb(212, 118, 24);
 }
 
 .list {
@@ -64,10 +68,17 @@
     max-width: 60%;
     display: flex;
     margin: 0 auto;
-    margin-top: 15%;
+    /* margin-top: 10%; */
     text-align: center;
     align-items: center;
     justify-content: space-between;
+}
+
+.learn-words {
+    margin-top: 10%;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .leftArrow {

@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CardWrapper from './CardWrapper';
 import './styles/card.css'
 
 function Carousel({ data }) {
     const [position, setPosition] = useState(0);
     const [pressed, setPressed] = useState(false);
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+
+    useEffect(() => ref.current && ref.current.focus());
 
     const handleClick = () => {
         setPressed(!pressed);
+        setCount(count + 1);
     }
     const showPreviousCard = () => {
         if (position === 0) {
@@ -35,7 +40,9 @@ function Carousel({ data }) {
                 data={data}
                 dataLength={data.length}
                 pressed={pressed}
-                handleClick={handleClick} />
+                handleClick={handleClick}
+                count={count}
+                wrapperref={ref} />
         </div>
     )
 }
