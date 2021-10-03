@@ -13,7 +13,9 @@ function Carousel({ data }) {
     const handleClick = () => {
         setPressed(!pressed);
         setCount(count + 1);
+        data[position].pressed = true;
     }
+    
     const showPreviousCard = () => {
         if (position === 0) {
             setPosition(data.length - 1, setPressed(false))
@@ -39,7 +41,7 @@ function Carousel({ data }) {
                 number={position}
                 data={data}
                 dataLength={data.length}
-                pressed={pressed}
+                pressed={data[position].pressed}
                 handleClick={handleClick}
                 count={count}
                 wrapperref={ref} />

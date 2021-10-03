@@ -10,6 +10,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
 function App() {
+
+  words.forEach((elem) => elem.pressed = false);
+  
   return (
     <BrowserRouter>
     <div className="App"> 

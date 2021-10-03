@@ -7,25 +7,24 @@ import words from './assets/words.json'
 
 function CardsList() {
 
-    words.forEach((elem) => elem.pressed = false);
+    // words.forEach((elem) => elem.pressed = false);
 
-    const handleClick = (index) => {
-        words[index].pressed = true;
+    // const handleClick = (index) => {
+    //     words[index].pressed = true;
 
-    }
+    // }
 
     return (
         <div className="list">
             {
-                words.map((card, index) => (
+                words.map((card) => (
                     <Card
                         key={card.id}
                         english={card.english}
                         transcription={card.transcription}
                         translation={card.translation}
                         pressed={card.pressed}
-                        handleClick={handleClick}
-                        index={index}
+
                     ></Card>
                 ))
             }

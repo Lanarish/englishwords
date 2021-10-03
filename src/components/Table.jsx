@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/tableList.css';
 import TableButton from './TableButton';
 
@@ -10,13 +10,36 @@ function Table({ word }) {
         id,
         english,
         transcription,
-        translation
+        translation,
     });
+    const [isFilled, setIsFilled] = useState({
+        english: false,
+        transcription: false,
+        translation: false
+    })
+
+    const [error, setError] = useState("Поле не может быть пустым!")
+
+    const [formValid, setFormValid] = useState(false)
+
+    useEffect(() => {
+        if (error) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
+    }, [error])
 
     const handleChange = (e) => {
         setValue((prevWord) => {
             return { ...prevWord, [e.target.name]: e.target.value };
         });
+        if (e.target.value === '') {
+            setIsFilled({ ...isFilled, [e.target.name]: true })
+
+        } else {
+            setIsFilled({ ...isFilled, [e.target.name]: false })
+        }
     };
 
     const handleCancel = () => {
@@ -28,6 +51,7 @@ function Table({ word }) {
     const handleEdit = () => {
         setPressed(!isPressed);
     }
+
     return (
 
         <tr>
@@ -36,22 +60,28 @@ function Table({ word }) {
                 ? (
                     <>
                         <td>
+                            {(isFilled.english && error) && <div style={{ color: 'red' }}>{error}</div>}
                             <input type="text"
                                 onChange={handleChange}
+                                // onBlur={e => blurHandler(e)}
                                 value={value.english}
                                 name="english">
                             </input>
                         </td>
                         <td>
+                            {(isFilled.transcription && error) && <div style={{ color: 'red' }}>{error}</div>}
                             <input type="text"
                                 onChange={handleChange}
+                                // onBlur={e => blurHandler(e)}
                                 value={value.transcription}
                                 name="transcription">
                             </input>
                         </td>
                         <td>
+                            {(isFilled.translation && error) && <div style={{ color: 'red' }}>{error}</div>}
                             <input type="text"
                                 onChange={handleChange}
+                                // onBlur={e => blurHandler(e)}
                                 value={value.translation}
                                 name="translation">
                             </input>
@@ -71,6 +101,7 @@ function Table({ word }) {
                     ? (
                         <div>
                             <TableButton name={"Save"}
+                                disabled={!formValid}
                                 onClick={() => {
                                     setPressed(false);
                                 }} />
