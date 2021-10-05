@@ -12,40 +12,81 @@ function Table({ word }) {
         transcription,
         translation,
     });
-    const [isFilled, setIsFilled] = useState({
+
+    const [formErrors, setFormErrors] = useState({
+        english: '',
+        transcription: '',
+        translation: ''
+    });
+
+    const [formValid, setFormValid] = useState({
         english: false,
         transcription: false,
         translation: false
-    })
+    });
 
-    const [error, setError] = useState("Поле не может быть пустым!")
-
-    const [formValid, setFormValid] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(false)
 
     useEffect(() => {
-        if (error) {
-            setFormValid(false)
+        if (formValid.english || formValid.translation || formValid.transcription) {
+            setIsDisabled(true)
         } else {
-            setFormValid(true)
+            setIsDisabled(false)
         }
-    }, [error])
+    }, [formValid])
+
+
 
     const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        validateField(name, value);
         setValue((prevWord) => {
-            return { ...prevWord, [e.target.name]: e.target.value };
+            return { ...prevWord, [name]: value };
         });
-        if (e.target.value === '') {
-            setIsFilled({ ...isFilled, [e.target.name]: true })
 
-        } else {
-            setIsFilled({ ...isFilled, [e.target.name]: false })
-        }
     };
+
+    const validateField = (name, value) => {
+        if (value === "") {
+            setFormValid({ ...formValid, [name]: true })
+            setFormErrors({ ...formErrors, [name]: "Field is empty!" })
+        } else {
+            switch (name) {
+                case "english":
+                    if (value.match(/^[A-Za-z0-9]*$/)) {
+                        setFormValid({ ...formValid, english: false })
+                        setFormErrors({ ...formErrors, english: '' })
+                    } else {
+                        setFormValid({ ...formValid, english: true })
+                        setFormErrors({ ...formErrors, english: "Just on latin!" })
+                    }
+                    break;
+                case "transcription":
+                    if (value.match(/^[A-Za-z0-9]*$/)) {
+                        setFormValid({ ...formValid, transcription: false })
+                        setFormErrors({ ...formErrors, transcription: '' })
+                    } else {
+                        setFormValid({ ...formValid, transcription: true })
+                        setFormErrors({ ...formErrors, transcription: "Just on latin!" })
+                    }
+                    break;
+                case "translation":
+                    if (value.match(/^[а-яё -]+$/i)) {
+                        setFormValid({ ...formValid, translation: false })
+                        setFormErrors({ ...formErrors, translation: '' })
+                    } else {
+                        setFormValid({ ...formValid, translation: true })
+                        setFormErrors({ ...formErrors, translation: "Just on cyrillic!" })
+                    }
+                    break;
+            }
+        }
+    }
 
     const handleCancel = () => {
         setPressed(!isPressed);
         setValue({ ...word });
-
     };
 
     const handleEdit = () => {
@@ -53,35 +94,29 @@ function Table({ word }) {
     }
 
     return (
-
         <tr>
             <td>{id}</td>
             {isPressed
                 ? (
                     <>
                         <td>
-                            {(isFilled.english && error) && <div style={{ color: 'red' }}>{error}</div>}
+                            {(formValid.english && formErrors.english) && <div style={{ color: 'red' }}>{formErrors.english}</div>}
                             <input type="text"
                                 onChange={handleChange}
-                                // onBlur={e => blurHandler(e)}
                                 value={value.english}
                                 name="english">
                             </input>
                         </td>
-                        <td>
-                            {(isFilled.transcription && error) && <div style={{ color: 'red' }}>{error}</div>}
+                        <td>{(formValid.transcription && formErrors.transcription) && <div style={{ color: 'red' }}>{formErrors.transcription}</div>}
                             <input type="text"
                                 onChange={handleChange}
-                                // onBlur={e => blurHandler(e)}
                                 value={value.transcription}
                                 name="transcription">
                             </input>
                         </td>
-                        <td>
-                            {(isFilled.translation && error) && <div style={{ color: 'red' }}>{error}</div>}
+                        <td>{(formValid.translation && formErrors.translation) && <div style={{ color: 'red' }}>{formErrors.translation}</div>}
                             <input type="text"
                                 onChange={handleChange}
-                                // onBlur={e => blurHandler(e)}
                                 value={value.translation}
                                 name="translation">
                             </input>
@@ -100,18 +135,21 @@ function Table({ word }) {
                 {isPressed
                     ? (
                         <div>
-                            <TableButton name={"Save"}
-                                disabled={!formValid}
-                                onClick={() => {
-                                    setPressed(false);
-                                }} />
-                            <TableButton name={"Cancel"}
+                            <TableButton
+                                name={"Save"}
+                                disabled={isDisabled}
+                                onClick={() => { setPressed(false); }}
+                            />
+                            <TableButton
+                                name={"Cancel"}
                                 onClick={handleCancel} />
                         </div>)
                     : (
                         <div >
-                            <TableButton name={"Delete"} />
-                            <TableButton name={"Edit"}
+                            <TableButton
+                                name={"Delete"} />
+                            <TableButton
+                                name={"Edit"}
                                 onClick={handleEdit} />
                         </div>
                     )}
