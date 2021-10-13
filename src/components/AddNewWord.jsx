@@ -24,7 +24,7 @@ const AddNewWord = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        //validateField(name, value);
+        validateField(name, value);
         setValue({ ...value, [name]: value })
     }
     const handleAdd = (e) => {
