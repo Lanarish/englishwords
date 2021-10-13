@@ -17,11 +17,11 @@ function Navigation() {
                     <li>
                         <Link to="/game" className="links_li">Game</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/cards" className="links_li">
                             Cards
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
         </div>

@@ -1,51 +1,70 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CardWrapper from './CardWrapper';
+import { useWordsContext } from './Context';
+import Card from './Card';
+import Loader from './Loader';
 import './styles/card.css'
 
-function Carousel({ data }) {
+function Carousel({ }) {
     const [position, setPosition] = useState(0);
-    const [pressed, setPressed] = useState(false);
+    const [pressed, setPressed] = useState({});
     const [count, setCount] = useState(0);
     const ref = useRef(null);
+    const { words, setWords, isLoading, error } = useWordsContext()
 
     useEffect(() => ref.current && ref.current.focus());
 
     const handleClick = () => {
-        setPressed(!pressed);
+        const newData = [...words];
+        const index = newData.findIndex((obj) => obj.id === words[count].id);
+        newData[index].pressed = true;
+        setPressed({ ...pressed, [index]: true });
+        setWords(newData);
         setCount(count + 1);
-        data[position].pressed = true;
     }
-    
+
     const showPreviousCard = () => {
         if (position === 0) {
-            setPosition(data.length - 1, setPressed(false))
+            setPosition(words.length - 1);
+            setPressed(false)
         } else {
-            setPosition(position - 1, setPressed(false));
+            setPosition(position - 1);
+            setPressed(false);
         }
     }
 
     const showNextCard = () => {
-        if (position === data.length - 1) {
-            setPosition(0, setPressed(false));
+        if (position === words.length - 1) {
+            setPosition(0);
+            setPressed(false);
         } else {
-            setPosition(position + 1, setPressed(false));
+            setPosition(position + 1);
+            setPressed(false);
         }
 
 
     }
     return (
-        <div >
-            <CardWrapper
-                onShowPrevious={showPreviousCard}
-                onShowNext={showNextCard}
-                number={position}
-                data={data}
-                dataLength={data.length}
-                pressed={data[position].pressed}
-                handleClick={handleClick}
-                count={count}
-                wrapperref={ref} />
-        </div>
+        <Loader isLoading={isLoading} error={error}>
+            <div >
+                {words?.length > 0 &&
+                    <CardWrapper
+                        onShowPrevious={showPreviousCard}
+                        onShowNext={showNextCard}
+                        number={position}
+                        words={words}
+                        count={count}
+                    >
+                        <Card
+                            english={words[position].english}
+                            russian={words[position].russian}
+                            transcription={words[position].transcription}
+                            pressed={pressed[position]}
+                            handleClick={handleClick}
+                            cardref={ref} />
+                    </CardWrapper>}
+            </div>
+        </Loader>
     )
 }
 

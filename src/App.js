@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import TableList from './components/TableList';
 import Carousel from './components/Carousel';
-import CardsList from './components/CardsList';
+//import CardsList from './components/CardsList';
 import Navigation from './components/Navigation';
-import words from './components/assets/words.json';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 
 
 function App() {
-
-  words.forEach((elem) => elem.pressed = false);
+  
   
   return (
     <BrowserRouter>
@@ -19,11 +17,11 @@ function App() {
       <Navigation/>
         <Switch>
           <Route path="/game"> 
-            <Carousel data={words}/>
+            <Carousel/>
           </Route>
-          <Route path="/cards">
+          {/* <Route path="/cards">
             <CardsList/>
-          </Route>
+          </Route> */}
           <Route path="/"> 
             <TableList/>
           </Route>

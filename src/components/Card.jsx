@@ -1,22 +1,18 @@
 import React from 'react';
+import { getContext } from './Context';
 import './styles/card.css'
 
 
 
-function Card({ english, transcription, translation, pressed, handleClick, cardref }) {
-    // const [pressed, setPressed] = useState(false);
+function Card({ english, transcription, russian, pressed, handleClick, cardref }) {
 
-    // const handleClick = () => {
-    //     words[id].pressed = true;
-    // }
-    // const { english, transcription, translation, pressed, handleClick } = props;
 
     return (
         <div className="card">
             <div className="word">{english}</div>
             <div className="transcription">{transcription}</div>
             {pressed
-                ? <div className="translation"> {translation} </div>
+                ? <div className="translation"> {russian} </div>
                 : <button className="button-translate" onClick={handleClick} ref={cardref}> Translate </button>
             }
         </div >

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
-
+import { ProviderContext } from './components/Context';
 import App from './App';
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ProviderContext>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ProviderContext>,
   document.getElementById('root')
 );
