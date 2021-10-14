@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './styles/tableList.css';
+import './styles/tableList.scss';
 import useValidation from '../hooks/useValidation';
 import TableButton from './TableButton';
 import { useWordsContext } from './Context';
@@ -58,6 +58,29 @@ function Table({ word }) {
         setValue({ ...word });
     };
 
+    const handleSave = () => {
+        fetch(`/api/words/${id}/update`, {
+            method: 'POST',
+            body: JSON.stringify({
+                english: value.english,
+                transcription: value.transcription,
+                russian: value.russian,
+                tags: []
+            })
+        })
+            .then((response) => {
+                if (response.ok) { //Проверяем что код ответа 200
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong ...');
+                }
+            })
+            .then((response) => {
+                loadData()
+            })
+
+        setPressed(false);
+    }
     const handleEdit = () => {
         setPressed(!isPressed);
     }
@@ -107,7 +130,8 @@ function Table({ word }) {
                             <TableButton
                                 name={"Save"}
                                 disabled={isDisabled}
-                                onClick={() => { setPressed(false); }}
+                                onClick={handleSave}
+                            //onClick={() => { setPressed(false); }}
                             />
                             <TableButton
                                 name={"Cancel"}

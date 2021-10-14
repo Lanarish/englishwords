@@ -1,6 +1,6 @@
 import React from 'react';
 import { getContext } from './Context';
-import './styles/card.css'
+import './styles/card.scss'
 
 
 

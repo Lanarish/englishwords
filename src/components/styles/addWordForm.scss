@@ -1,0 +1,26 @@
+.addForm {
+    width: 80%;
+    height: 15vh;
+    margin: 0 auto;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    .addForm-inputs {
+        margin-right: 30px;
+
+        .input-english,
+        .input-transcription,
+        .input-russian {
+            width: 15vw;
+            height: 4vh;
+            border: 2px solid rgb(121, 23, 124);
+            border-radius: 10px;
+        }
+
+
+    }
+}

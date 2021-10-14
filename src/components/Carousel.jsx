@@ -3,11 +3,11 @@ import CardWrapper from './CardWrapper';
 import { useWordsContext } from './Context';
 import Card from './Card';
 import Loader from './Loader';
-import './styles/card.css'
+import './styles/card.scss'
 
 function Carousel({ }) {
     const [position, setPosition] = useState(0);
-    const [pressed, setPressed] = useState({});
+    const [pressed, setPressed] = useState(false);
     const [count, setCount] = useState(0);
     const ref = useRef(null);
     const { words, setWords, isLoading, error } = useWordsContext()
@@ -15,12 +15,15 @@ function Carousel({ }) {
     useEffect(() => ref.current && ref.current.focus());
 
     const handleClick = () => {
-        const newData = [...words];
-        const index = newData.findIndex((obj) => obj.id === words[count].id);
-        newData[index].pressed = true;
-        setPressed({ ...pressed, [index]: true });
-        setWords(newData);
+        setPressed(!pressed);
         setCount(count + 1);
+
+        // const newData = [...words];
+        // const index = newData.findIndex((obj) => obj.id === words[count].id);
+        // newData[index].pressed = true;
+        // setPressed({ ...pressed, [index]: true });
+        // setWords(newData);
+        // setCount(count + 1);
     }
 
     const showPreviousCard = () => {
@@ -59,7 +62,7 @@ function Carousel({ }) {
                             english={words[position].english}
                             russian={words[position].russian}
                             transcription={words[position].transcription}
-                            pressed={pressed[position]}
+                            pressed={pressed}
                             handleClick={handleClick}
                             cardref={ref} />
                     </CardWrapper>}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import './styles/card.css'
+import './styles/card.scss'
 
 
 

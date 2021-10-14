@@ -1,8 +1,8 @@
 .nav {
     display: flex;
     flex-direction: row;
-    background-color: indianred;
 
+    background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
 }
 
 .logo {
@@ -32,7 +32,7 @@
 
 .links_li:hover {
     font-size: 26px;
-    background-color: rgb(212, 24, 24);
+    background-color: rgba(211, 25, 211, 0.6);
     border-radius: 10px;
     padding: 5px;
 

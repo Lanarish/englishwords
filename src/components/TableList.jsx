@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/tableList.css';
+import './styles/tableList.scss';
 import Table from './Table';
 import AddNewWord from './AddNewWord';
 import { useWordsContext } from './Context';
@@ -15,7 +15,7 @@ function TableList() {
             <AddNewWord />
             <div className="tableList">
                 <table className="table">
-                    <thead>
+                    <thead >
                         <tr>
                             <th>#</th>
                             <th>Word</th>
@@ -25,7 +25,6 @@ function TableList() {
                         </tr>
                     </thead>
                     <tbody>
-
                         {words?.length &&
                             words.map(word => (
                                 <Table

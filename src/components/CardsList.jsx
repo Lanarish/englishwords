@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Loader from './Loader';
 import { useWordsContext } from './Context';
-import './styles/card.css';
+import './styles/card.scss';
 import words from './assets/words.json'
 
 

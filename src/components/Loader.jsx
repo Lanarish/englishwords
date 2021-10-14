@@ -1,11 +1,19 @@
 import React from "react";
+import './styles/loader.scss'
 
 const Loader = ({ isLoading, error, children }) => {
     if (error) {
         return <p>{error}</p>;
     }
     if (isLoading) {
-        return <p>PLEASE WAIT!</p>;
+        return (
+            <div class="container">
+                <div class="dash uno"></div>
+                <div class="dash dos"></div>
+                <div class="dash tres"></div>
+                <div class="dash cuatro"></div>
+            </div>
+        )
     }
 
     return children

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './App.css';
+import './App.scss';
 import TableList from './components/TableList';
 import Carousel from './components/Carousel';
 //import CardsList from './components/CardsList';
