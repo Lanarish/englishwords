@@ -3,34 +3,41 @@
     margin: 0 auto;
     padding: 0 15px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 5px;
 
 }
 
 .table {
+    position: relative;
     width: 100%;
     margin-top: 50px;
+    margin-bottom: 50px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border-collapse: collapse;
     border-radius: 10px;
+    z-index: 1;
 
 }
 
-
+.table th {
+    border-radius: 5px;
+}
 
 .table th,
 .table td {
     text-align: center;
     padding: 10px;
+
 }
 
 .table th {
-    background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
-
-    color: #fff;
+    background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #acfa9e 100%);
+    font-weight: 800;
+    color: rgba(63, 68, 63, 0.8);
 }
 
 .table th:nth-child(odd) {
-    background-image: linear-gradient(to top, rgb(9, 48, 114) 0%, #d43d8b 100%);
+    background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
 }
 
 .table tr:nth-child(even) {
@@ -42,7 +49,7 @@
 }
 
 .table tr:hover {
-    background-color: rgba(29, 99, 219, 0.3);
+    background-color: rgba(255, 175, 189, 0.3);
 }
 
 .table td:not(:last-child) {
@@ -56,14 +63,15 @@
     margin-right: 20px;
     padding: 2px;
     border-radius: 5px;
-    background-color: rgba(2, 80, 197, 0.8);
-    color: #fff;
+    background-color: rgba(255, 175, 189, 0.8);
+    box-shadow: 2px 2px 1px 1px rgb(231, 142, 172);
+    color: rgba(63, 68, 63, 0.8);
     border: none;
     font-size: 16px;
 
 }
 
 .table_button:hover {
-    background-color: rgb(74, 59, 59);
+    background-color: rgb(252, 184, 252);
     color: #fff;
 }

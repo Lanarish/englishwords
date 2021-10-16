@@ -1,4 +1,5 @@
 .addForm {
+    position: relative;
     width: 80%;
     height: 15vh;
     margin: 0 auto;
@@ -6,8 +7,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border: 2px solid rgb(235, 231, 231);
+    border-radius: 10px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(201, 255, 191, 0.7);
+    box-shadow: 2px 2px 2px 2px rgb(231, 142, 172);
+    z-index: 2;
 
     .addForm-inputs {
         margin-right: 30px;
@@ -17,7 +22,8 @@
         .input-russian {
             width: 15vw;
             height: 4vh;
-            border: 2px solid rgb(121, 23, 124);
+            border: 2px solid rgb(231, 142, 172);
+            ;
             border-radius: 10px;
         }
 
