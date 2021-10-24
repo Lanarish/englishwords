@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.scss';
 import TableList from './components/TableList';
 import Carousel from './components/Carousel';
-//import CardsList from './components/CardsList';
-import Navigation from './components/Navigation';
+
+import Header from './components/Header';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import WordsStore from './store/WordsStore';
+import {Provider} from "mobx-react"; 
 
-
+const stores={
+  wordsStore:new WordsStore()
+}
 
 function App() {
   
@@ -14,21 +18,17 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App"> 
-      <Navigation/>
+      <Header/>
+      <Provider {...stores}>
         <Switch>
           <Route path="/game"> 
             <Carousel/>
           </Route>
-          {/* <Route path="/cards">
-            <CardsList/>
-          </Route> */}
           <Route path="/"> 
             <TableList/>
           </Route>
-          {/* <Route path="/">
-            Welcome to LOGOS!
-            </Route> */}
         </Switch>
+        </Provider>
         </div>
     </BrowserRouter>
   ); 

@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './styles/tableList.scss';
 import useValidation from '../hooks/useValidation';
 import TableButton from './TableButton';
-import { useWordsContext } from './Context';
 
 
-function Table({ word }) {
+function Table({ word, handleDelete, handleSave }) {
     const { formErrors, formValid, isDisabled, setIsDisabled, validateField } = useValidation();
     const { id, english, transcription, russian } = word;
     const [isPressed, setPressed] = useState(false);
@@ -15,7 +14,6 @@ function Table({ word }) {
         transcription,
         russian,
     });
-    const { loadData } = useWordsContext()
 
     useEffect(() => {
         if (formValid.english || formValid.russian || formValid.transcription) {
@@ -37,50 +35,16 @@ function Table({ word }) {
 
     };
 
-    const handleDelete = (id) => {
-        fetch(`/api/words/${id}/delete`, {
-            method: 'POST'
-        })
-            .then((response) => {
-                if (response.ok) { //Проверяем что код ответа 200
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong ...');
-                }
-            })
-            .then((response) => {
-                loadData()
-            })
-    }
 
     const handleCancel = () => {
         setPressed(!isPressed);
         setValue({ ...word });
     };
-
-    const handleSave = () => {
-        fetch(`/api/words/${id}/update`, {
-            method: 'POST',
-            body: JSON.stringify({
-                english: value.english,
-                transcription: value.transcription,
-                russian: value.russian,
-                tags: []
-            })
-        })
-            .then((response) => {
-                if (response.ok) { //Проверяем что код ответа 200
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong ...');
-                }
-            })
-            .then((response) => {
-                loadData()
-            })
-
+    const updateWord = () => {
+        handleSave(value);
         setPressed(false);
     }
+    
     const handleEdit = () => {
         setPressed(!isPressed);
     }
@@ -130,7 +94,7 @@ function Table({ word }) {
                             <TableButton
                                 name={"Save"}
                                 disabled={isDisabled}
-                                onClick={handleSave}
+                                onClick={updateWord}
                             //onClick={() => { setPressed(false); }}
                             />
                             <TableButton

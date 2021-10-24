@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './styles/tableList.scss';
 import Table from './Table';
 import AddNewWord from './AddNewWord';
-import { useWordsContext } from './Context';
 import Loader from './Loader';
+import { inject, observer } from 'mobx-react';
 
 
 
-function TableList() {
-    const { words, isLoading, error } = useWordsContext()
 
+
+function TableList({ words, isLoading, error, handleDelete, handleSave, handleAdd }) {
+    
     return (
         <Loader isLoading={isLoading} error={error}>
-            <AddNewWord />
+            <AddNewWord
+                handleAdd={handleAdd} />
             <div className="tableList">
                 <table className="table">
                     <thead >
@@ -29,7 +31,9 @@ function TableList() {
                             words.map(word => (
                                 <Table
                                     key={word.id}
-                                    word={word} />
+                                    word={word}
+                                    handleDelete={handleDelete}
+                                    handleSave={handleSave} />
                             ))
                         }
                     </tbody>
@@ -40,4 +44,20 @@ function TableList() {
     );
 }
 
-export default TableList;
+export default inject(({ wordsStore }) => {
+    const { words, isLoading, error, handleDelete, handleSave, loadData, handleAdd } = wordsStore;
+
+    useEffect(() => {
+        loadData()
+    }, [])
+    return {
+        words,
+        isLoading,
+        error,
+        handleDelete,
+        handleSave,
+        handleAdd,
+        loadData
+    }
+
+})(observer(TableList));

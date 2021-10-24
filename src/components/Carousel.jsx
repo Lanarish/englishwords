@@ -1,29 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CardWrapper from './CardWrapper';
-import { useWordsContext } from './Context';
 import Card from './Card';
 import Loader from './Loader';
-import './styles/card.scss'
+import './styles/card.scss';
+import { inject, observer } from 'mobx-react';
 
-function Carousel({ }) {
+function Carousel({ words, isLoading, error }) {
     const [position, setPosition] = useState(0);
     const [pressed, setPressed] = useState(false);
     const [count, setCount] = useState(0);
+
     const ref = useRef(null);
-    const { words, setWords, isLoading, error } = useWordsContext()
+
+
 
     useEffect(() => ref.current && ref.current.focus());
 
     const handleClick = () => {
         setPressed(!pressed);
         setCount(count + 1);
-
-        // const newData = [...words];
-        // const index = newData.findIndex((obj) => obj.id === words[count].id);
-        // newData[index].pressed = true;
-        // setPressed({ ...pressed, [index]: true });
-        // setWords(newData);
-        // setCount(count + 1);
     }
 
     const showPreviousCard = () => {
@@ -71,4 +66,16 @@ function Carousel({ }) {
     )
 }
 
-export default Carousel;
+export default inject(({ wordsStore }) => {
+    const { words, isLoading, error, loadData } = wordsStore;
+
+    useEffect(() => {
+        loadData()
+    }, [])
+    return {
+        words,
+        isLoading,
+        error
+    }
+
+})(observer(Carousel));

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import TableButton from './TableButton';
 import useValidation from '../hooks/useValidation';
-import { useWordsContext } from './Context';
 import './styles/addWordForm.scss'
 
-const AddNewWord = () => {
+const AddNewWord = ({ handleAdd }) => {
     const { formErrors, formValid, isDisabled, setIsDisabled, validateField } = useValidation();
 
     const [value, setValue] = useState({
@@ -12,7 +11,6 @@ const AddNewWord = () => {
         transcription: '',
         russian: ''
     });
-    const { loadData } = useWordsContext()
 
     useEffect(() => {
         if (formValid.english || formValid.russian || formValid.transcription) {
@@ -30,35 +28,13 @@ const AddNewWord = () => {
             return { ...word, [name]: value };
         });
     }
-    const handleAdd = (e) => {
+
+    const wordAdd = (e) => {
         e.preventDefault()
-        fetch('/api/words/add', {
-            method: 'POST',
-
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify({
-                english: value.english,
-                transcription: value.transcription,
-                russian: value.russian,
-                tags: []
-            })
-
-        })
-            .then((response) => {
-                if (response.ok) { //Проверяем что код ответа 200
-                    return response.json();
-                } else {
-                    throw new Error('Something went wrong ...');
-                }
-            })
-            .then((response) => {
-                loadData()
-            })
-        setValue({ english: '', transcription: '', russian: '' });
-
+        handleAdd(value);
+        setValue({ english: '', transcription: '', russian: '' })
     }
+    
     return (
         <div className="addForm">
             <div className='addForm-inputs'>
@@ -95,7 +71,7 @@ const AddNewWord = () => {
                 <TableButton
                     name={"Add"}
                     disabled={isDisabled}
-                    onClick={handleAdd} />
+                    onClick={wordAdd} />
             </div>
         </div>
     )
