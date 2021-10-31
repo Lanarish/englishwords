@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/tableList.css';
+import '../Table/tableList.scss';
 
 function TableButton(props) {
     return (

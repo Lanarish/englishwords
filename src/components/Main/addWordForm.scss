@@ -1,0 +1,74 @@
+@import "../styles/fonts.scss";
+@import "../styles/mainColors.scss";
+
+
+.addForm {
+    position: relative;
+    width: 80%;
+    height: 15vh;
+    margin: 0 auto;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ebe7e7;
+    border-radius: 10px;
+    font-family: $mainfont;
+    background-color: #c9ffbfb3;
+    box-shadow: 2px 2px 2px 2px $borderpink;
+    z-index: 2;
+
+    .addForm-inputs {
+        margin-right: 30px;
+
+        .input-english,
+        .input-transcription,
+        .input-russian {
+            width: 15vw;
+            height: 4vh;
+            border: 2px solid $borderpink;
+            border-radius: 10px;
+        }
+
+
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .addForm {
+        position: relative;
+        width: 90%;
+        height: 35vh;
+        margin: 0 auto;
+        margin-top: 15%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(235, 231, 231);
+        border-radius: 10px;
+        font-family: $mainfont;
+        background-color: rgba(201, 255, 191, 0.7);
+        box-shadow: 2px 2px 2px 2px $borderpink;
+        ;
+        z-index: 2;
+
+        .addForm-inputs {
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            margin-bottom: 10px;
+
+
+            .input-english,
+            .input-transcription,
+            .input-russian {
+
+                width: 50vw;
+                height: 5vh;
+                border: 2px solid $borderpink;
+                ;
+                border-radius: 10px;
+            }
+        }
+    }
+}

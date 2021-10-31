@@ -1,36 +1,34 @@
 import React from 'react';
-import './App.css';
-import TableList from './components/TableList';
-import Carousel from './components/Carousel';
-import CardsList from './components/CardsList';
-import Navigation from './components/Navigation';
-import words from './components/assets/words.json';
+import './App.scss';
+import TableList from './components/Table/TableList';
+import Carousel from './components/Card/Carousel';
+
+import Header from './components/Main/Header';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import WordsStore from './store/WordsStore';
+import {Provider} from "mobx-react"; 
 
-
+const stores={
+  wordsStore:new WordsStore()
+}
 
 function App() {
-
-  words.forEach((elem) => elem.pressed = false);
+  
   
   return (
     <BrowserRouter>
     <div className="App"> 
-      <Navigation/>
+      <Header/>
+      <Provider {...stores}>
         <Switch>
           <Route path="/game"> 
-            <Carousel data={words}/>
-          </Route>
-          <Route path="/cards">
-            <CardsList/>
+            <Carousel/>
           </Route>
           <Route path="/"> 
             <TableList/>
           </Route>
-          {/* <Route path="/">
-            Welcome to LOGOS!
-            </Route> */}
         </Switch>
+        </Provider>
         </div>
     </BrowserRouter>
   ); 

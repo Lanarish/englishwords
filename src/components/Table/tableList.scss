@@ -1,0 +1,126 @@
+@import "../styles/fonts.scss";
+@import "../styles/mainColors.scss";
+
+
+.tableList {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+    font-family: $mainfont;
+    border-radius: 5px;
+
+    .table {
+        position: relative;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-collapse: collapse;
+        border-radius: 10px;
+        z-index: 1;
+
+    }
+
+    .table th {
+        border-radius: 5px;
+    }
+
+    .table th,
+    .table td {
+        text-align: center;
+        padding: 10px;
+
+    }
+
+    .table th {
+        background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+        font-weight: 800;
+        color: rgba(63, 68, 63, 0.8);
+    }
+
+    .table th:nth-child(odd) {
+        background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+    }
+
+    .table tr:nth-child(even) {
+        background: #f5f5f5;
+    }
+
+    .table tr {
+        transition: all .3s;
+    }
+
+    .table tr:hover {
+        background-color: rgba(255, 175, 189, 0.3);
+    }
+
+    .table td:not(:last-child) {
+        border-right: 1px solid #ccc;
+    }
+}
+
+
+.table_button {
+
+    width: 90px;
+    height: 30px;
+    margin-right: 20px;
+    padding: 2px;
+    border-radius: 5px;
+    background-color: #ffafbdcc;
+    box-shadow: 2px 2px 1px 1px $borderpink;
+    color: $textcolor;
+    border: none;
+    font-size: 16px;
+
+    .table_button:hover {
+        background-color: #fcb8fc;
+        color: #fff;
+    }
+
+}
+
+
+@media screen and (max-width: 736px) {
+    .tableList {
+        max-width: 730px;
+        margin: 0 auto;
+        font-family: $mainfont;
+
+        .table {
+            position: relative;
+            width: 50%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px #00000033;
+            border-collapse: collapse;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .table th:first-child,
+        .table td:first-child {
+            display: none;
+        }
+
+        .input-field {
+            width: 100%;
+            border: 2px solid $borderpink;
+            border-radius: 5px;
+        }
+    }
+
+    .table_button {
+        width: 70px;
+        height: 25px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 2px;
+        border-radius: 5px;
+        background-color: #ffafbdcc;
+        box-shadow: 2px 2px 1px 1px $borderpink;
+        color: $textcolor;
+        border: none;
+        font-size: 16px;
+    }
+}

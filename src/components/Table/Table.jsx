@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import './styles/tableList.css';
-import TableButton from './TableButton';
+import '../Table/tableList.scss';
+import useValidation from '../../hooks/useValidation';
+import TableButton from '../Table/TableButton';
 
 
-function Table({ word }) {
-    const { id, english, transcription, translation } = word;
+function Table({ word, handleDelete, handleSave }) {
+    const { formErrors, formValid, isDisabled, setIsDisabled, validateField } = useValidation();
+    const { id, english, transcription, russian } = word;
     const [isPressed, setPressed] = useState(false);
     const [value, setValue] = useState({
         id,
         english,
         transcription,
-        translation,
+        russian,
     });
-
-    const [formErrors, setFormErrors] = useState({
-        english: '',
-        transcription: '',
-        translation: ''
-    });
-
-    const [formValid, setFormValid] = useState({
-        english: false,
-        transcription: false,
-        translation: false
-    });
-
-    const [isDisabled, setIsDisabled] = useState(false)
 
     useEffect(() => {
-        if (formValid.english || formValid.translation || formValid.transcription) {
+        if (formValid.english || formValid.russian || formValid.transcription) {
             setIsDisabled(true)
         } else {
             setIsDisabled(false)
@@ -47,47 +35,15 @@ function Table({ word }) {
 
     };
 
-    const validateField = (name, value) => {
-        if (value === "") {
-            setFormValid({ ...formValid, [name]: true })
-            setFormErrors({ ...formErrors, [name]: "Field is empty!" })
-        } else {
-            switch (name) {
-                case "english":
-                    if (value.match(/^[A-Za-z0-9]*$/)) {
-                        setFormValid({ ...formValid, english: false })
-                        setFormErrors({ ...formErrors, english: '' })
-                    } else {
-                        setFormValid({ ...formValid, english: true })
-                        setFormErrors({ ...formErrors, english: "Just on latin!" })
-                    }
-                    break;
-                case "transcription":
-                    if (value.match(/^[A-Za-z0-9]*$/)) {
-                        setFormValid({ ...formValid, transcription: false })
-                        setFormErrors({ ...formErrors, transcription: '' })
-                    } else {
-                        setFormValid({ ...formValid, transcription: true })
-                        setFormErrors({ ...formErrors, transcription: "Just on latin!" })
-                    }
-                    break;
-                case "translation":
-                    if (value.match(/^[а-яё -]+$/i)) {
-                        setFormValid({ ...formValid, translation: false })
-                        setFormErrors({ ...formErrors, translation: '' })
-                    } else {
-                        setFormValid({ ...formValid, translation: true })
-                        setFormErrors({ ...formErrors, translation: "Just on cyrillic!" })
-                    }
-                    break;
-            }
-        }
-    }
 
     const handleCancel = () => {
         setPressed(!isPressed);
         setValue({ ...word });
     };
+    const updateWord = () => {
+        handleSave(value);
+        setPressed(false);
+    }
 
     const handleEdit = () => {
         setPressed(!isPressed);
@@ -102,6 +58,7 @@ function Table({ word }) {
                         <td>
                             {(formValid.english && formErrors.english) && <div style={{ color: 'red' }}>{formErrors.english}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
                                 value={value.english}
                                 name="english">
@@ -109,16 +66,18 @@ function Table({ word }) {
                         </td>
                         <td>{(formValid.transcription && formErrors.transcription) && <div style={{ color: 'red' }}>{formErrors.transcription}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
                                 value={value.transcription}
                                 name="transcription">
                             </input>
                         </td>
-                        <td>{(formValid.translation && formErrors.translation) && <div style={{ color: 'red' }}>{formErrors.translation}</div>}
+                        <td>{(formValid.russian && formErrors.russian) && <div style={{ color: 'red' }}>{formErrors.russian}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
-                                value={value.translation}
-                                name="translation">
+                                value={value.russian}
+                                name="russian">
                             </input>
                         </td>
                     </>
@@ -127,7 +86,7 @@ function Table({ word }) {
                     <>
                         <td>{value.english}</td>
                         <td>{value.transcription}</td>
-                        <td>{value.translation}</td>
+                        <td>{value.russian}</td>
                     </>
                 )}
 
@@ -138,7 +97,8 @@ function Table({ word }) {
                             <TableButton
                                 name={"Save"}
                                 disabled={isDisabled}
-                                onClick={() => { setPressed(false); }}
+                                onClick={updateWord}
+                            //onClick={() => { setPressed(false); }}
                             />
                             <TableButton
                                 name={"Cancel"}
@@ -147,7 +107,8 @@ function Table({ word }) {
                     : (
                         <div >
                             <TableButton
-                                name={"Delete"} />
+                                name={"Delete"}
+                                onClick={() => handleDelete(id)} />
                             <TableButton
                                 name={"Edit"}
                                 onClick={handleEdit} />
