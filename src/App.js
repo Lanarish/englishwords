@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.scss';
-import TableList from './components/TableList';
-import Carousel from './components/Carousel';
+import TableList from './components/Table/TableList';
+import Carousel from './components/Card/Carousel';
 
-import Header from './components/Header';
+import Header from './components/Main/Header';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import WordsStore from './store/WordsStore';
 import {Provider} from "mobx-react"; 

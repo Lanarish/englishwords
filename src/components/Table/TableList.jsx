@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import './styles/tableList.scss';
-import Table from './Table';
-import AddNewWord from './AddNewWord';
-import Loader from './Loader';
+import React, { useEffect } from 'react';
+import '../Table/tableList.scss';
+import Table from '../Table/Table';
+import AddNewWord from '../Main/AddNewWord';
+import Loader from '../Main/Loader';
 import { inject, observer } from 'mobx-react';
 
 
@@ -10,7 +10,7 @@ import { inject, observer } from 'mobx-react';
 
 
 function TableList({ words, isLoading, error, handleDelete, handleSave, handleAdd }) {
-    
+
     return (
         <Loader isLoading={isLoading} error={error}>
             <AddNewWord

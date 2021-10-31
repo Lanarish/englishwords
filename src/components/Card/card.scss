@@ -1,0 +1,146 @@
+@import "../styles/fonts.scss";
+@import "../styles/mainColors.scss";
+
+.card {
+    width: 260px;
+    height: 150px;
+    border: 2px solid #f0f7f0b3;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px $primarypink;
+    ;
+    font-family: $mainfont;
+
+    .word {
+        color: #3f443f;
+        margin-top: 10px;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .transcription {
+        color: #3f443f;
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .translation {
+        width: 180px;
+        height: 40px;
+        margin: 0 auto;
+        padding: 5px 0 0 0;
+        font-size: 26px;
+        margin-top: 10px;
+        border-radius: 10px;
+        color: $primarypink;
+        border: 1px solid $borderpink;
+    }
+
+    .button-translate {
+        width: 150px;
+        height: 40px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+        color: #fff;
+        border: 1px solid $borderpink;
+        font-size: 18px;
+    }
+
+}
+
+
+.cardWrapper {
+    max-width: 60%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 10vh;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+
+    .leftArrow,
+    .rightArrow {
+        padding: 5px;
+        width: 5rem;
+        height: 2rem;
+        background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+        color: #fff;
+        border-radius: 50px;
+        border: 1px solid #f4dde1;
+        font-size: 22px;
+    }
+
+
+}
+
+.learn-words {
+    color: #3f443fe6;
+    margin-top: 12%;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: $mainfont;
+}
+
+
+.number_of_card {
+    color: #3f443fe6;
+    margin-top: 30px;
+    font-size: 22px;
+    font-family: $mainfont;
+}
+
+
+@media screen and (max-width: 736px) {
+
+    .card {
+        width: 560px;
+        height: 150px;
+        border: 2px solid rgba(240, 247, 240, 0.7);
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 2px $primarypink;
+        font-family: $mainfont;
+    }
+
+    .cardWrapper {
+        max-width: 90%;
+        display: flex;
+        margin: 0 auto;
+        margin-top: 20vh;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+
+
+        .leftArrow {
+            padding: 5px;
+            width: 4rem;
+            height: 2rem;
+            background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+            color: #fff;
+            border-radius: 50px;
+            border: 1px solid #f4dce0;
+            font-size: 22px;
+            margin-right: 20px;
+        }
+
+        .rightArrow {
+            padding: 5px;
+            width: 4rem;
+            height: 2rem;
+            background-image: linear-gradient(to top, $primaryColor 0%, $primarypink 0%, $primarygreen 100%);
+            color: #fff;
+            border-radius: 50px;
+            border: 1px solid #f4dce0;
+            font-size: 22px;
+            margin-left: 20px;
+        }
+    }
+
+    .learn-words {
+        color: #3f443fe6;
+        margin-top: 30%;
+        font-size: 30px;
+        font-family: $mainfont;
+    }
+}

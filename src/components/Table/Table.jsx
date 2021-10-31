@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './styles/tableList.scss';
-import useValidation from '../hooks/useValidation';
-import TableButton from './TableButton';
+import '../Table/tableList.scss';
+import useValidation from '../../hooks/useValidation';
+import TableButton from '../Table/TableButton';
 
 
 function Table({ word, handleDelete, handleSave }) {
@@ -44,7 +44,7 @@ function Table({ word, handleDelete, handleSave }) {
         handleSave(value);
         setPressed(false);
     }
-    
+
     const handleEdit = () => {
         setPressed(!isPressed);
     }
@@ -58,6 +58,7 @@ function Table({ word, handleDelete, handleSave }) {
                         <td>
                             {(formValid.english && formErrors.english) && <div style={{ color: 'red' }}>{formErrors.english}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
                                 value={value.english}
                                 name="english">
@@ -65,6 +66,7 @@ function Table({ word, handleDelete, handleSave }) {
                         </td>
                         <td>{(formValid.transcription && formErrors.transcription) && <div style={{ color: 'red' }}>{formErrors.transcription}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
                                 value={value.transcription}
                                 name="transcription">
@@ -72,6 +74,7 @@ function Table({ word, handleDelete, handleSave }) {
                         </td>
                         <td>{(formValid.russian && formErrors.russian) && <div style={{ color: 'red' }}>{formErrors.russian}</div>}
                             <input type="text"
+                                className="input-field"
                                 onChange={handleChange}
                                 value={value.russian}
                                 name="russian">

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Card from './Card';
-import Loader from './Loader';
+import React from 'react';
+import Card from '../Card/Card';
+import Loader from '../Main/Loader';
 import { useWordsContext } from './Context';
-import './styles/card.scss';
-import words from './assets/words.json'
+import '../Card/card.scss';
+
 
 
 

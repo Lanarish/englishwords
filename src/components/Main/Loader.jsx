@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/loader.scss'
+import '../Main/loader.scss'
 
 const Loader = ({ isLoading, error, children }) => {
     if (error) {

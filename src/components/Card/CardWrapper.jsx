@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import './styles/card.scss'
+import '../Card/card.scss'
 
 
 
@@ -16,7 +16,7 @@ function CardWrapper({ children, count, onShowPrevious, onShowNext, number, word
                     <div className="cardWrapper" >
                         <button className="leftArrow" onClick={onShowPrevious}> <FaArrowLeft /></button>
                         {children}
-                        <button className="leftArrow" onClick={onShowNext}> <FaArrowRight /></button>
+                        <button className="rightArrow" onClick={onShowNext}> <FaArrowRight /></button>
                     </div>
                     <p className="number_of_card">{number + 1}/{words.length}</p>
                 </>

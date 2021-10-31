@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CardWrapper from './CardWrapper';
 import Card from './Card';
-import Loader from './Loader';
-import './styles/card.scss';
+import Loader from '../Main/Loader';
+import '../Card/card.scss';
 import { inject, observer } from 'mobx-react';
 
 function Carousel({ words, isLoading, error }) {

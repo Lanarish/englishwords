@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TableButton from './TableButton';
-import useValidation from '../hooks/useValidation';
-import './styles/addWordForm.scss'
+import TableButton from '../Table/TableButton';
+import useValidation from '../../hooks/useValidation';
+import '../../components/Main/addWordForm.scss'
 
 const AddNewWord = ({ handleAdd }) => {
     const { formErrors, formValid, isDisabled, setIsDisabled, validateField } = useValidation();
@@ -34,7 +34,7 @@ const AddNewWord = ({ handleAdd }) => {
         handleAdd(value);
         setValue({ english: '', transcription: '', russian: '' })
     }
-    
+
     return (
         <div className="addForm">
             <div className='addForm-inputs'>

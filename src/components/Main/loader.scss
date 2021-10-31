@@ -1,3 +1,6 @@
+@import "../styles/mainColors.scss";
+
+
 .container {
     position: absolute;
     top: 50%;
@@ -11,7 +14,7 @@
     width: 35px;
     height: 15px;
     border-radius: 8px;
-    background: #ffafbd;
+    background: $primarypink;
     box-shadow: 0 0 10px 0 #FECDFF;
 }
 
