@@ -7,6 +7,7 @@ You can add new words, update or delete them on the table.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/77628644/139596438-54388671-8cb4-4529-b825-a0652e7e9ce2.png">
 
 You can also use the cards for your train.
+
 <img width="1438" alt="image" src="https://user-images.githubusercontent.com/77628644/139596715-682aa3e7-ddef-4e91-98f5-0d4c4214b8c4.png">
 #
 
