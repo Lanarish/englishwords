@@ -1,3 +1,4 @@
+# About the project
 This is my own project for learn english words. Simple, but usefull app.
 
 You can add new words, update or delete them on the table. 
