@@ -9,6 +9,7 @@ You can add new words, update or delete them on the table.
 You can also use the cards for your train.
 
 <img width="1438" alt="image" src="https://user-images.githubusercontent.com/77628644/139596715-682aa3e7-ddef-4e91-98f5-0d4c4214b8c4.png">
+
 #
 
 
