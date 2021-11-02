@@ -12,7 +12,7 @@ function CardWrapper({ children, count, onShowPrevious, onShowNext, number, word
             {
                 words?.length &&
                 <>
-                    <p className="learn-words"> Слов изучено: {count}</p>
+                    <p className="learn-words">  Lerned words: {count}</p>
                     <div className="cardWrapper" >
                         <button className="leftArrow" onClick={onShowPrevious}> <FaArrowLeft /></button>
                         {children}
